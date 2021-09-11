@@ -13,7 +13,7 @@
 # Version: 0.0.7
 # Author: Dirk Krienbuehl https://t.me/Deekee62
 # Additions : VS https://t.me/BhaagBoseDk : Removing lncli and icreasing compatibilities with other installations.
-#
+# Additions (for myself) : KP : Replacing ppm calculations "compared to local balance" to "total forwards" to get average ppm to help with fees setting baseline
 # ------------------------------------------------------------------------------------------------
 #
 
@@ -52,16 +52,16 @@ e_chainpaid="$($BOS chart-chain-fees  --days 7 | grep 'Total:' | awk '{print $10
 # Calculate the percentage of the forwared sats compared to the local channel balance for the last 7 days
 f_pcrouted=`printf "%0.2f" $((100/(10#$a_local/10#$b_routed)))`
 #
-# Calculate the ppm of the fees earned compared to the local channel balance for the last 7 days
-g_ppmearned=$((1000000/(10#$a_local/10#$c_earned)))
+# Calculate the ppm of the fees earned compared to the total forwarded amount of sats for the last 7 days
+g_ppmearned=$((1000000/(10#$b_routed/10#$c_earned)))
 #
-# Calculate the ppm of the fees paid compared to the local channel balance for the last 7 days
+# Calculate the ppm of the fees paid compared to the total forwarded amount of sats for the last 7 days
 #
-h_ppmpaid=$((1000000/(10#$a_local/10#$d_paid)))
+h_ppmpaid=$((1000000/(10#$b_routed/10#$d_paid)))
 #
-# Calculate the ppm of the net fees paid compared to the local channel balance for the last 7 days
+# Calculate the ppm of the net fees paid compared to the total forwarded amount of sats for the last 7 days
 #
-i_ppmnet=$((1000000/(10#$a_local/(10#$c_earned-10#$d_paid-10#$e_chainpaid))))
+i_ppmnet=$((1000000/(10#$b_routed/(10#$c_earned-10#$d_paid-10#$e_chainpaid))))
 #
 # Calculate the sats of net fees earned
 #
