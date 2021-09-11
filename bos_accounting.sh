@@ -13,7 +13,7 @@
 # Version: 0.0.7
 # Author: Dirk Krienbuehl https://t.me/Deekee62
 # Additions : VS https://t.me/BhaagBoseDk : Removing lncli and icreasing compatibilities with other installations.
-# Additions (for myself) : KP : Replacing ppm calculations "compared to local balance" to "total forwards" to get average ppm to help with fees setting baseline
+# Additions (for myself) : KP : Replacing ppm calculations "compared to local balance" to "total forwards" to get average ppm will serve as baseline for setting fees.
 # ------------------------------------------------------------------------------------------------
 #
 
